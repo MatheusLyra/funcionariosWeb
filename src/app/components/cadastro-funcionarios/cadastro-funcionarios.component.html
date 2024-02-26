@@ -1,0 +1,116 @@
+<div class="container mt-3">
+    <div class="card">
+      <div class="card-body">
+        <h4>Sistema de cadastro de funcionários:</h4>
+        <p>Cadastro de funcionários.</p>
+  
+  
+        <div *ngIf="mensagem" class="mt-3 mt-3">
+          <h5>{{mensagem}}</h5>
+        </div>
+  
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="row mb-2">
+            <div class="col-md-6">
+              <label>Nome:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Digite aqui"
+                formControlName="nome"
+              />
+              <div
+                class="text-danger"
+                *ngIf="f['nome'].touched && f['nome'].invalid"
+              >
+                Por favor, informe o nome do funcionário.
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label>Matrícula:</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Digite aqui"
+                formControlName="matricula"
+              />
+              <div
+                class="text-danger"
+                *ngIf="f['matricula'].touched && f['matricula'].invalid"
+              >
+                Por favor, informe a matrícula.
+              </div>
+            </div>
+            <div class="col-md-3">
+                <label>Cpf:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Digite aqui"
+                  formControlName="cpf"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="f['cpf'].touched && f['cpf'].invalid"
+                >
+                  Por favor, informe o cpf.
+                </div>
+              </div>
+          </div>
+  
+  
+          <div class="row mb-2">
+            <div class="col-md-6">
+                <label>Data e hora:</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="dataAdmissao"
+                />
+                <div
+                class="text-danger"
+                *ngIf="f['dataAdmissao'].touched && f['dataAdmissao'].invalid"
+              >
+              Por favor, informe a data e hora de admissão.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label>Empresas:</label>
+              <select class="form-select" formControlName="empresaId">
+                <option value="">Escolha uma opção</option>
+                <option *ngFor="let item of empresas" value="{{ item.id }}">
+                  {{ item.nomeFantasia }}
+                </option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="f['empresaId'].touched && f['empresaId'].invalid"
+              >
+                Por favor, selecione a empresa do funcionário.
+              </div>
+            </div>
+          </div>
+  
+  
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <button
+                type="submit"
+                class="btn btn-outline-success"
+                [disabled]="form.invalid"
+              >
+                Realizar Cadastro
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,58 @@
+   
+
+   <div class="container mt-3">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Sistema de cadastro de funcionários:</h4>
+                    <p>Listagem de funcionários cadastrados.</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <button class="btn btn-outline-success btn-sm mt-3" (click)="redirecionarParaCadastro()"> 
+                        Cadastrar funcionário 
+                    </button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-sm table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Matrícula</th>
+                            <th>Cpf</th>
+                            <th>Data de Admissao</th>                            
+                            <th>Data/Hora Cadastro</th>
+                            <th [width]="150">Operações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of funcionarios">
+                        <td>{{item.nome}}</td>
+                        <td>{{item.matricula}}</td>
+                        <td>{{item.cpf}}</td>
+                        <td>{{item.dataAdmissao}}</td>
+                        <td>{{item.dataHoraCadastro}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-2"
+                                       (click)="onEdit(item.id)"> 
+                                       Editar 
+                                 </button>
+                                <button class="btn btn-sm btn-outline-danger"
+                                       (click)="onDelete(item.id)"> 
+                                       Excluir 
+                                 </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"> Quantidade de empresas: 
+                                {{funcionarios.length}} </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
